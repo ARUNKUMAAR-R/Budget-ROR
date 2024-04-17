@@ -11,7 +11,7 @@ COPY . .
 RUN npm init -y && npm install && npm install save stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
 RUN bundle  install    
 RUN  rubocop --auto-correct-all && npx stylelint "**/*.{css,scss}" --fix
-ENTRYPOINT [".bin/docker-entrypoint.sh"]
+ENTRYPOINT ["bin/docker-entrypoint.sh"]
 EXPOSE 3000
 CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 
