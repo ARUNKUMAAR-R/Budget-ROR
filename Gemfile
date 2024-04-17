@@ -28,8 +28,8 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'cancancan'
 gem 'jbuilder'
-gem 'rails-controller-testing'
-gem 'rspec-rails'
+gem 'rubocop'
+# gem 'rspec-rails'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
