@@ -2,7 +2,7 @@ version: '3'
 services:
   db:
     image: postgres:14.2-alpine
-    container_name: demo-postgres-14.2
+    container_name: db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     command: 
@@ -13,9 +13,10 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
-  demo-web:
+  web:
     build: .
-    command: "./bin/rails server -b 0.0.0.0 -p 3000 && bin/rails db:migrate RAILS_ENV=development"
+    container_name: web   
+   
     environment:
       
       - POSTGRES_HOST=${POSTGRES_HOST}
