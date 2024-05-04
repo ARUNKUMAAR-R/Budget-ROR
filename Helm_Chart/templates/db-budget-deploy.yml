@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.db.app }} 
+  name: {{ .Values.db.app }}
+  namespace: {{ .Values.db.namespace }}
+spec:
+  replicas: {{ .Values.db.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.db.app }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Values.db.app }}
+    spec:
+      containers:
+      - image: {{ .Values.db.image.repo }}:{{ .Values.db.image.tag }}
+        name: {{ .Values.db.app }}-container
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+           configMapKeyRef:
+             name: {{ .Values.secret.name }} 
+             key: POSTGRES_DB
+
+        - name: POSTGRES_USER
+          valueFrom:
+           configMapKeyRef:
+             name: {{ .Values.secret.name }}
+             key: POSTGRES_USER
+
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+           configMapKeyRef:
+             name: {{ .Values.secret.name }}
+             key: POSTGRES_PASSWORD
+        resources: {}
+status: {}

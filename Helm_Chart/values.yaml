@@ -1,0 +1,20 @@
+db:
+  app: "psql"
+  namespace: "opt"
+  replicas: 3
+  image:
+    repo: "docker.io/arunrascall/budget-postgres"
+    tag: "fixed"
+apps:
+  app: "ruby"
+  namespace: "opt"
+  replicas: 4
+  image:
+    repo: "docker.io/arunrascall/budget-rubyonrails"
+    tag: "development"
+secret:
+  name: "app-cred"
+  namespace: "opt"
+    #user: "arun"
+    #pass: "arun"
+  db: "Budgy_development"

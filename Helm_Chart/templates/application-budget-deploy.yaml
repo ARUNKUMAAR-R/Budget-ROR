@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.apps.app }} 
+  name: {{ .Values.apps.app }}
+  namespace: {{ .Values.apps.namespace }}
+spec:
+  replicas: {{ .Values.apps.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.apps.app }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Values.apps.app }}
+    spec:
+     containers:
+      - image: {{ .Values.apps.image.repo }}:{{ .Values.apps.image.tag }}
+        name: budget-ror
+        ports:
+        - containerPort: 3000
+        env:
+        - name: POSTGRES_USER
+          valueFrom: 
+            configMapKeyRef:
+              name: {{ .Values.secret.name }} 
+              key: POSTGRES_USER
+
+        - name: POSTGRES_PASSWORD
+          valueFrom: 
+            configMapKeyRef:
+              name: {{ .Values.secret.name }}
+              key: POSTGRES_PASSWORD
+        
+        - name: POSTGRES_DB
+          valueFrom: 
+            configMapKeyRef: 
+              name: {{ .Values.secret.name }}
+              key: POSTGRES_DB
+
+        - name: POSTGRES_HOST
+          valueFrom: 
+            configMapKeyRef: 
+              name: {{ .Values.secret.name }}
+              key: POSTGRES_HOST
+
+        
+        resources: {}
+status: {}
