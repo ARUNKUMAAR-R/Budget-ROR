@@ -8,7 +8,7 @@
 
 > The Ruby on Rails capstone project ([remember what they are?](https://github.com/microverseinc/curriculum-html-css/blob/main/articles/capstone_intro.md)) is about building a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
-- I created a Ruby on Rails application that allows the user to:
+ created a Ruby on Rails application that allows the user to:
 
   - register and log in, so that the data is private to them.
   - introduce new transactions associated with a category.
