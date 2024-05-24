@@ -45,7 +45,7 @@
 - Limit access to webapp resources based on authorization rules.
 - Analyze in writing why you have made a coding choice using one structure over another.
 
-## Live Demo 🔗
+### Live Demo 🔗
 
 [Live Demo Link](https://budgy-budget-api.herokuapp.com/)
 
