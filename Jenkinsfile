@@ -43,6 +43,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Modifying Manifest files'){
+            steps{
+
+               echo "Triggering Update Manifests"
+               build job: 'manifest-update', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+            }
+        }
         
     }
         
