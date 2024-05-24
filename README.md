@@ -25,7 +25,7 @@
 
 
 
-## Learning objectives
+### Learning objectives
 
 - Use ruby gems as software packages system.
 - Install Ruby on Rails framework.
